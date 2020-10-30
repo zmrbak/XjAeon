@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Web.Script.Serialization;
 using XjAeon.Common;
 
@@ -58,14 +59,31 @@ namespace XjAeon.Generic
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pageId"></param>
+        /// <param name="perPage"></param>
+        /// <returns></returns>
+
+        /// <summary>
         /// 获取第几页的数据
         /// </summary>
         /// <param name="pageId">第几页，默认从1开始</param>
         /// <param name="perPage">每页多少条数据，默认100条</param>
+        /// <param name="filterList">查询条件，默认null</param>
         /// <returns></returns>
-        private TClass GetDataByPage(int pageId = 1, int perPage = 100)
+        public TClass GetDataByPage(int pageId = 1, int perPage = 100, List<KeyValuePair<string, string>> filterList = null)
         {
-            string dataString = Utility.GetWebString($"{apiUrl.Url}?access_token={AccessToken.AccessTokenObject.result.access_token}&page={pageId}&per_page={perPage}");
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append($"{apiUrl.Url}?access_token={AccessToken.AccessTokenObject.result.access_token}&page={pageId}&per_page={perPage}");
+            if (filterList != null)
+            {
+                foreach (var item in filterList)
+                {
+                    stringBuilder.Append($"&{item.Key.ToString()}={item.Value.ToString()}");
+                }
+            }
+            string dataString = Utility.GetWebString(stringBuilder.ToString());
             return new JavaScriptSerializer().Deserialize<TClass>(dataString);
         }
 

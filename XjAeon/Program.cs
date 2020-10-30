@@ -13,7 +13,9 @@ namespace XjAeon
         static void Main(string[] args)
         {
             //人事系统 - 人员基础信息
-            //var xjAeonApiData = new XjAeonApiData<PersonnelBasicInfoObject>();
+            var xjAeonApiData = new XjAeonApiData<PersonnelBasicInfoObject>();
+            var list = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("UID", "10201401498") };
+            var a1 = xjAeonApiData.GetDataByPage(1, 1, list);
 
             //人事系统- 组织机构代码表
             //var xjAeonApiData = new XjAeonApiData<OrganizationCodeObject>();
@@ -29,5 +31,5 @@ namespace XjAeon
 
             //var a1 = xjAeonApiData.GetAllData();
         }
-    }   
+    }
 }
