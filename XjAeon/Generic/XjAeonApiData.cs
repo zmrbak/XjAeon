@@ -89,7 +89,7 @@ namespace XjAeon.Generic
             if (firstRecordObject.code != 10000)
             {
                 Utility.Log.Error("获取的数据有误，请联系程序开发者！\n" + dataString);
-                return;
+                throw new Exception("获取的数据有误，请联系程序开发者！\n" + dataString);
             }
 
             //数据结构

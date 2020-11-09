@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Web.Script.Serialization;
+using XjAeon.ApiObject;
 
 namespace XjAeon.Common
 {
@@ -52,7 +53,7 @@ namespace XjAeon.Common
             {
                 appKeySecret = new AppKeySecret
                 {
-                    AppUrl = "/open_api/authentication/get_access_token",
+                    AppUrl = new AccessTokenObject().Url,
                     AppKey = "1234567890AppKey",
                     AppSecret = "1234567890AppSecret"
                 };
@@ -60,6 +61,7 @@ namespace XjAeon.Common
                 //写入配置文件
                 File.WriteAllText(appKeySecretFile, new JavaScriptSerializer().Serialize(appKeySecret));
                 Utility.Log.Info("写入配置文件：" + appKeySecretFile);
+                throw new Exception("重新创建了配置文件(" + appKeySecretFile + ")，请手动修改参数！");
             }
 
             //经测试，远程服务器经常在这里出问题，那就多试几次
@@ -94,28 +96,6 @@ namespace XjAeon.Common
             public string AppUrl { get; set; }
             public string AppKey { get; set; }
             public string AppSecret { get; set; }
-        }
-    }
-
-    /// <summary>
-    /// 从网站上获取的AccessToken对象
-    /// </summary>
-    public class AccessTokenObject
-    {
-        public int code { get; set; }
-        public string message { get; set; }
-        public string description { get; set; }
-        public string uuid { get; set; }
-        public Result result { get; set; }
-        public long timeTicks { get; set; } = DateTime.Now.Ticks;
-
-        public class Result
-        {
-            public string access_token { get; set; }
-            public string token_type { get; set; }
-            public int expires_in { get; set; }
-            public string scope { get; set; }
-            public string license { get; set; }
         }
     }
 }

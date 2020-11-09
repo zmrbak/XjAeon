@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiObject\AccessTokenObject.cs" />
     <Compile Include="ApiObject\IApiObject.cs" />
     <Compile Include="ApiObject\IResult.cs" />
     <Compile Include="ApiObject\PostGraduateBasicInfoObject.cs" />
