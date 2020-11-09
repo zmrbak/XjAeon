@@ -67,14 +67,14 @@ namespace XjAeon.Generic
         {
             int perPage = 100;
             int pageCount = (int)Math.Ceiling(totalRecords * 1.0 / perPage);
-            List<T> personnelBasicInfoObjects = new List<T>();
+            List<T> ObjectsPerpageList = new List<T>();
 
             for (int pageNumber = 0; pageNumber < pageCount; pageNumber++)
             {
                 Utility.Log.Info("读取页码：" + (pageNumber + 1));
-                personnelBasicInfoObjects.Add(GetDataByPage(pageNumber + 1, perPage));
+                ObjectsPerpageList.Add(GetDataByPage(pageNumber + 1, perPage));
             }
-            return personnelBasicInfoObjects;
+            return ObjectsPerpageList;
         }
 
         /// <summary>
@@ -83,30 +83,25 @@ namespace XjAeon.Generic
         private void GetFirstRecord()
         {
             string dataString = Utility.GetWebString($"{newT.Url}?access_token={AccessToken.AccessTokenObject.result.access_token}&page=1&per_page=1");
-            T personnelBasicInfo = new JavaScriptSerializer().Deserialize<T>(dataString);
+            T firstRecordObject = new JavaScriptSerializer().Deserialize<T>(dataString);
 
             //验证数据
-            PropertyInfo[] PropertyList = personnelBasicInfo.GetType().GetProperties();
-            foreach (var item in PropertyList)
+            if (firstRecordObject.code != 10000)
             {
-                if (item.Name == "code")
-                {
-                    int code = int.Parse(item.GetValue(personnelBasicInfo, null).ToString());
-                    if (code != 10000)
-                    {
-                        Utility.Log.Error("获取的数据有误，请联系程序开发者！\n" + dataString);
-                        return;
-                    }
-                }
+                Utility.Log.Error("获取的数据有误，请联系程序开发者！\n" + dataString);
+                return;
             }
 
             //数据结构
+            PropertyInfo[] PropertyList = firstRecordObject.GetType().GetProperties();
             dataStruct = new List<KeyValuePair<string, string>>();
             foreach (var item in PropertyList)
             {
                 if (item.Name == "result")
                 {
-                    var result = item.GetValue(personnelBasicInfo, null);
+                    var result = item.GetValue(firstRecordObject, null);
+                    totalRecords = (result as IResult).total;
+
                     PropertyInfo[] PropertyList2 = result.GetType().GetProperties();
                     foreach (var item1 in PropertyList2)
                     {
@@ -120,11 +115,6 @@ namespace XjAeon.Generic
                                 dataStruct.Add(new KeyValuePair<string, string>(name, value));
                             }
                             continue;
-                        }
-
-                        if (item1.Name == "total")
-                        {
-                            totalRecords = int.Parse(item1.GetValue(result, null).ToString());
                         }
                     }
                 }

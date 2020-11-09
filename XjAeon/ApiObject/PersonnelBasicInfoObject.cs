@@ -34,14 +34,14 @@
     public class PersonnelBasicInfoObject : IApiObject
     {
         public string Url => "/open_api/customization/hrryxx/full";
-
         public int code { get; set; }
         public string message { get; set; }
         public string description { get; set; }
         public string uuid { get; set; }
+
         public Result result { get; set; }
 
-        public class Result
+        public class Result : IResult
         {
             public int page { get; set; }
             public int per { get; set; }

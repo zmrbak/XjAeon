@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiObject\IApiObject.cs" />
+    <Compile Include="ApiObject\IResult.cs" />
     <Compile Include="ApiObject\PostGraduateBasicInfoObject.cs" />
     <Compile Include="ApiObject\OrganizationCodeObject.cs" />
     <Compile Include="ApiObject\PersonnelBasicInfoObject.cs" />
