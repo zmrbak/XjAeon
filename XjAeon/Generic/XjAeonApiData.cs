@@ -4,14 +4,15 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Web.Script.Serialization;
+using XjAeon.ApiObject;
 using XjAeon.Common;
 
 namespace XjAeon.Generic
 {
-    public class XjAeonApiData<TClass>
+    public class XjAeonApiData<T> where T : IApiObject, new()
     {
-        private string API_URL_FILE_NAME = "ApiUrl_" + typeof(TClass).Name + ".json";
-        private ApiUrl apiUrl = null;
+        //先实例化一次，以获取类中的Url属性
+        private T newT = new T();
 
         private int totalRecords = 0;
         /// <summary>
@@ -36,34 +37,9 @@ namespace XjAeon.Generic
         /// </summary>
         public XjAeonApiData()
         {
-            string ApiUrlJsonFileName = Path.Combine(Utility.AppDataPath, API_URL_FILE_NAME);
-            Utility.Log.Info("检查配置文件：" + ApiUrlJsonFileName);
-
-            if (File.Exists(ApiUrlJsonFileName))
-            {
-                Utility.Log.Info("读取配置文件：" + ApiUrlJsonFileName);
-                apiUrl = new JavaScriptSerializer().Deserialize<ApiUrl>(File.ReadAllText(ApiUrlJsonFileName));
-            }
-            else
-            {
-                apiUrl = new ApiUrl
-                {
-                    Url = typeof(TClass).GetField("Url").GetValue(typeof(TClass)).ToString()
-                };
-                Utility.Log.Info("写入配置文件：" + ApiUrlJsonFileName);
-                File.WriteAllText(ApiUrlJsonFileName, new JavaScriptSerializer().Serialize(apiUrl));
-            }
-
             //获取一条数据
             GetFirstRecord();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="pageId"></param>
-        /// <param name="perPage"></param>
-        /// <returns></returns>
 
         /// <summary>
         /// 获取第几页的数据
@@ -72,10 +48,10 @@ namespace XjAeon.Generic
         /// <param name="perPage">每页多少条数据，默认100条</param>
         /// <param name="filterList">查询条件，默认null</param>
         /// <returns></returns>
-        public TClass GetDataByPage(int pageId = 1, int perPage = 100, List<KeyValuePair<string, string>> filterList = null)
+        public T GetDataByPage(int pageId = 1, int perPage = 100, List<KeyValuePair<string, string>> filterList = null)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append($"{apiUrl.Url}?access_token={AccessToken.AccessTokenObject.result.access_token}&page={pageId}&per_page={perPage}");
+            stringBuilder.Append($"{newT.Url}?access_token={AccessToken.AccessTokenObject.result.access_token}&page={pageId}&per_page={perPage}");
             if (filterList != null)
             {
                 foreach (var item in filterList)
@@ -84,14 +60,14 @@ namespace XjAeon.Generic
                 }
             }
             string dataString = Utility.GetWebString(stringBuilder.ToString());
-            return new JavaScriptSerializer().Deserialize<TClass>(dataString);
+            return new JavaScriptSerializer().Deserialize<T>(dataString);
         }
 
-        public List<TClass> GetAllData()
+        public List<T> GetAllData()
         {
             int perPage = 100;
             int pageCount = (int)Math.Ceiling(totalRecords * 1.0 / perPage);
-            List<TClass> personnelBasicInfoObjects = new List<TClass>();
+            List<T> personnelBasicInfoObjects = new List<T>();
 
             for (int pageNumber = 0; pageNumber < pageCount; pageNumber++)
             {
@@ -106,8 +82,8 @@ namespace XjAeon.Generic
         /// </summary>
         private void GetFirstRecord()
         {
-            string dataString = Utility.GetWebString($"{apiUrl.Url}?access_token={AccessToken.AccessTokenObject.result.access_token}&page=1&per_page=1");
-            TClass personnelBasicInfo = new JavaScriptSerializer().Deserialize<TClass>(dataString);
+            string dataString = Utility.GetWebString($"{newT.Url}?access_token={AccessToken.AccessTokenObject.result.access_token}&page=1&per_page=1");
+            T personnelBasicInfo = new JavaScriptSerializer().Deserialize<T>(dataString);
 
             //验证数据
             PropertyInfo[] PropertyList = personnelBasicInfo.GetType().GetProperties();

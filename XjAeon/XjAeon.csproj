@@ -50,13 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiObject\IApiObject.cs" />
     <Compile Include="ApiObject\PostGraduateBasicInfoObject.cs" />
     <Compile Include="ApiObject\OrganizationCodeObject.cs" />
     <Compile Include="ApiObject\PersonnelBasicInfoObject.cs" />
     <Compile Include="ApiObject\PostGraduateProfessionalCodeObject.cs" />
     <Compile Include="ApiObject\UndergraduateBasicInfoObject.cs" />
     <Compile Include="Common\AccessToken.cs" />
-    <Compile Include="Common\ApiUrl.cs" />
     <Compile Include="Common\Utility.cs" />
     <Compile Include="Generic\XjAeonApiData.cs" />
     <Compile Include="Program.cs" />

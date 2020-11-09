@@ -29,9 +29,9 @@
     /// <summary>
     /// 研究生系统-	研究生基本信息
     /// </summary>
-    class PostGraduateBasicInfoObject
+    class PostGraduateBasicInfoObject : IApiObject
     {
-        public static string Url = "/open_api/customization/vaosesschoolroll/full";
+        public string Url => "/open_api/customization/vaosesschoolroll/full";
 
         public int code { get; set; }
         public string message { get; set; }

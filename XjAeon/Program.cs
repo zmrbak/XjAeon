@@ -13,12 +13,12 @@ namespace XjAeon
         static void Main(string[] args)
         {
             //人事系统 - 人员基础信息
-            var xjAeonApiData = new XjAeonApiData<PersonnelBasicInfoObject>();
-            var list = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("UID", "10201401498") };
-            var a1 = xjAeonApiData.GetDataByPage(1, 1, list);
+            //var xjAeonApiData = new XjAeonApiData<PersonnelBasicInfoObject>();
+            //var list = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("UID", "10201401498") };
+            //var a1 = xjAeonApiData.GetDataByPage(1, 1, list);
 
             //人事系统- 组织机构代码表
-            //var xjAeonApiData = new XjAeonApiData<OrganizationCodeObject>();
+            var xjAeonApiData = new XjAeonApiData<OrganizationCodeObject>();
 
             //教务系统-本科生基本信息
             //var xjAeonApiData = new XjAeonApiData<UndergraduateBasicInfoObject>();
@@ -29,7 +29,7 @@ namespace XjAeon
             //研究生系统 - 研究生专业代码表 
             //var xjAeonApiData = new XjAeonApiData<PostGraduateProfessionalCodeObject>();
 
-            //var a1 = xjAeonApiData.GetAllData();
+            var a1 = xjAeonApiData.GetAllData();
         }
     }
 }

@@ -35,9 +35,9 @@
     /// <summary>
     /// 教务系统-本科生基本信息
     /// </summary>
-    public class UndergraduateBasicInfoObject
+    public class UndergraduateBasicInfoObject : IApiObject
     {
-        public static string Url = "/open_api/customization/viewstudent_alpha/full";
+        public string Url => "/open_api/customization/viewstudent_alpha/full";
 
         public int code { get; set; }
         public string message { get; set; }

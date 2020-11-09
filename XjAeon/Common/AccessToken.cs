@@ -53,8 +53,8 @@ namespace XjAeon.Common
                 appKeySecret = new AppKeySecret
                 {
                     AppUrl = "/open_api/authentication/get_access_token",
-                    AppKey = "20200930230363715",
-                    AppSecret = "0f8a8a47bf9f2390f02134696892903b223da361"
+                    AppKey = "1234567890AppKey",
+                    AppSecret = "1234567890AppSecret"
                 };
 
                 //写入配置文件

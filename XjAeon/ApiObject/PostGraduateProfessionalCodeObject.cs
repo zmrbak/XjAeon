@@ -19,9 +19,9 @@
     /// <summary>
     /// 研究生系统 - 研究生专业代码表 
     /// </summary>
-    class PostGraduateProfessionalCodeObject
+    class PostGraduateProfessionalCodeObject : IApiObject
     {
-        public static string Url = "/open_api/customization/vfosterprofessional/full";
+        public string Url => "/open_api/customization/vfosterprofessional/full";
 
         public int code { get; set; }
         public string message { get; set; }
@@ -51,5 +51,5 @@
             public string ZYDM { get; set; }
             public string MC { get; set; }
         }
-    }   
+    }
 }

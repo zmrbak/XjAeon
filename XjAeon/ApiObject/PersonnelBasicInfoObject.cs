@@ -31,9 +31,9 @@
     /// <summary>
     /// 人事系统 - 人员基础信息
     /// </summary>
-    public class PersonnelBasicInfoObject
+    public class PersonnelBasicInfoObject : IApiObject
     {
-        public static string Url = "/open_api/customization/hrryxx/full";
+        public string Url => "/open_api/customization/hrryxx/full";
 
         public int code { get; set; }
         public string message { get; set; }

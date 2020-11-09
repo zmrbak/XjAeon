@@ -29,15 +29,16 @@
     /// <summary>
     /// 人事系统- 组织机构代码表
     /// </summary>
-    public class OrganizationCodeObject
+    public class OrganizationCodeObject : IApiObject
     {
-        public static string Url = "/open_api/customization/hrjgszxx/full";
+        public string Url => "/open_api/customization/hrjgszxx/full";
 
         public int code { get; set; }
         public string message { get; set; }
         public string description { get; set; }
         public string uuid { get; set; }
         public Result result { get; set; }
+
 
         public class Result
         {
@@ -71,5 +72,5 @@
             public string SFST { get; set; }
             public string PX { get; set; }
         }
-    }
+    }   
 }
