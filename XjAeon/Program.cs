@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using XjAeon.ApiObject;
 using XjAeon.ApiObject.人事系统;
+using XjAeon.ApiObject.学校概况数据集;
 using XjAeon.ApiObject.教务系统;
 using XjAeon.ApiObject.教学管理数据集;
+using XjAeon.ApiObject.教职工管理数据集;
 using XjAeon.ApiObject.研究生系统;
 using XjAeon.Generic;
 
@@ -20,7 +22,7 @@ namespace XjAeon
         static void Main(string[] args)
         {
             //人事系统 - 人员基础信息
-            DownLoadData<人员基础信息>();
+            //DownLoadData<人员基础信息>();
 
             //var xjAeonApiData = new XjAeonApiData<人员基础信息>();
             //var list = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("UID", "10201401498") };
@@ -40,6 +42,12 @@ namespace XjAeon
 
             //教学管理数据集  - 研究生专业信息
             //DownLoadData<研究生专业信息>();
+
+            //学校概况数据集 - 院系所单位信息
+            //DownLoadData<院系所单位信息>();
+
+            //教职工管理数据集 - 教职工基本信息
+            //DownLoadData<教职工基本信息>();
 
         }
 
