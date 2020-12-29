@@ -1,4 +1,4 @@
-﻿namespace XjAeon.ApiObject
+﻿namespace XjAeon.ApiObject.人事系统
 {
     /*
     //接口调用请求说明子表
@@ -29,7 +29,7 @@
     /// <summary>
     /// 人事系统- 组织机构代码表
     /// </summary>
-    public class OrganizationCodeObject : IApiObject
+    public class 组织机构代码表 : IApiObject
     {
         public string Url => "/open_api/customization/hrjgszxx/full";
         public int code { get; set; }
@@ -51,24 +51,66 @@
 
         public class Data_Struct
         {
+            /// <summary>
+            /// 单位号
+            /// </summary>
             public string DWH { get; set; }
+            /// <summary>
+            /// 单位名称
+            /// </summary>
             public string DWMC { get; set; }
+            /// <summary>
+            /// 单位简称
+            /// </summary>
             public string DWJC { get; set; }
+            /// <summary>
+            /// 隶属单位号
+            /// </summary>
             public string LSDWH { get; set; }
+            /// <summary>
+            /// 单位类别码
+            /// </summary>
             public string DWLBM { get; set; }
+            /// <summary>
+            /// 是否使用
+            /// </summary>
             public string SFST { get; set; }
+            /// <summary>
+            /// 排序
+            /// </summary>
             public string PX { get; set; }
         }
 
         public class Datum
         {
             public int __row_number__ { get; set; }
+            /// <summary>
+            /// 单位号
+            /// </summary>
             public string DWH { get; set; }
+            /// <summary>
+            /// 单位名称
+            /// </summary>
             public string DWMC { get; set; }
+            /// <summary>
+            /// 单位简称
+            /// </summary>
             public string DWJC { get; set; }
+            /// <summary>
+            /// 隶属单位号
+            /// </summary>
             public string LSDWH { get; set; }
+            /// <summary>
+            /// 单位类别码
+            /// </summary>
             public string DWLBM { get; set; }
+            /// <summary>
+            /// 是否使用
+            /// </summary>
             public string SFST { get; set; }
+            /// <summary>
+            /// 排序
+            /// </summary>
             public string PX { get; set; }
         }
     }   

@@ -11,6 +11,6 @@ namespace XjAeon.ApiObject
         int page { get; set; }
         int per { get; set; }
         int total { get; set; }
-        int max_page { get; set; }
+        int max_page { get; set; }       
     }
 }

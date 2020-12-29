@@ -71,7 +71,7 @@ namespace XjAeon.Generic
 
             for (int pageNumber = 0; pageNumber < pageCount; pageNumber++)
             {
-                Utility.Log.Info("读取页码：" + (pageNumber + 1));
+                Utility.Log.Info("读取页码：" + (pageNumber + 1) + "/" + (pageCount + 1));
                 ObjectsPerpageList.Add(GetDataByPage(pageNumber + 1, perPage));
             }
             return ObjectsPerpageList;
@@ -92,33 +92,52 @@ namespace XjAeon.Generic
                 throw new Exception("获取的数据有误，请联系程序开发者！\n" + dataString);
             }
 
-            //数据结构
-            PropertyInfo[] PropertyList = firstRecordObject.GetType().GetProperties();
+            //使用dynamic动态处理
             dataStruct = new List<KeyValuePair<string, string>>();
-            foreach (var item in PropertyList)
-            {
-                if (item.Name == "result")
-                {
-                    var result = item.GetValue(firstRecordObject, null);
-                    totalRecords = (result as IResult).total;
+            dynamic d = firstRecordObject;
+            dynamic result = d.result;
+            totalRecords = (result as IResult).total;
+            dynamic data_struct = result.data_struct;
 
-                    PropertyInfo[] PropertyList2 = result.GetType().GetProperties();
-                    foreach (var item1 in PropertyList2)
-                    {
-                        if (item1.Name == "data_struct")
-                        {
-                            var data_struct = item1.GetValue(result, null);
-                            foreach (PropertyInfo item2 in data_struct.GetType().GetProperties())
-                            {
-                                string name = item2.Name;
-                                string value = item2.GetValue(data_struct, null).ToString();
-                                dataStruct.Add(new KeyValuePair<string, string>(name, value));
-                            }
-                            continue;
-                        }
-                    }
-                }
+            foreach (PropertyInfo item2 in data_struct.GetType().GetProperties())
+            {
+                string name = item2.Name;
+                var itemValue = item2.GetValue(data_struct, null);
+                string value = itemValue == null ? "--未获权限--" : itemValue.ToString();
+                dataStruct.Add(new KeyValuePair<string, string>(name, value));
             }
+
+
+            #region 数据结构
+            //PropertyInfo[] PropertyList = firstRecordObject.GetType().GetProperties();
+            //dataStruct = new List<KeyValuePair<string, string>>();
+            //foreach (var item in PropertyList)
+            //{
+            //    if (item.Name == "result")
+            //    {
+            //        var result = item.GetValue(firstRecordObject, null);
+            //        totalRecords = (result as IResult).total;
+
+            //        PropertyInfo[] PropertyList2 = result.GetType().GetProperties();
+            //        foreach (var item1 in PropertyList2)
+            //        {
+            //            if (item1.Name == "data_struct")
+            //            {
+            //                var data_struct = item1.GetValue(result, null);
+            //                foreach (PropertyInfo item2 in data_struct.GetType().GetProperties())
+            //                {
+            //                    string name = item2.Name;
+            //                    string value = item2.GetValue(data_struct, null).ToString();
+            //                    dataStruct.Add(new KeyValuePair<string, string>(name, value));
+            //                }
+            //                continue;
+            //            }
+            //        }
+            //    }
+            //}
+            #endregion
         }
+
+
     }
 }

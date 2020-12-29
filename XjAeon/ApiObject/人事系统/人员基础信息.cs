@@ -1,4 +1,4 @@
-﻿namespace XjAeon.ApiObject
+﻿namespace XjAeon.ApiObject.人事系统
 {
     /*
     //接口调用请求说明子表
@@ -31,7 +31,7 @@
     /// <summary>
     /// 人事系统 - 人员基础信息
     /// </summary>
-    public class PersonnelBasicInfoObject : IApiObject
+    public class 人员基础信息 : IApiObject
     {
         public string Url => "/open_api/customization/hrryxx/full";
         public int code { get; set; }
@@ -53,23 +53,80 @@
 
         public class Data_Struct
         {
+            /// <summary>
+            ///  人员标识码  
+            /// </summary>
             public string UID { get; set; }
+            /// <summary>
+            /// 姓名
+            /// </summary>
             public string XM { get; set; }
+            /// <summary>
+            ///  性别码  
+            /// </summary>
             public string XBM { get; set; }
+            /// <summary>
+            /// 民族码
+            /// </summary>
+            public string MZM { get; set; }
+            /// <summary>
+            /// 国籍码
+            /// </summary>
+            public string GJM { get; set; }
+            /// <summary>
+            /// 编制类别码{DMB_XB_BZLB}
+            /// </summary>
             public string BZLBM { get; set; }
+            /// <summary>
+            /// 当前状态码{DMB_HB_JZGDQZT}
+            /// </summary>
             public string DQZTM { get; set; }
+            /// <summary>
+            /// 教职工所在单位{HR_JGSZXX}
+            /// </summary>
             public string SZDWH { get; set; }
         }
 
         public class Datum
         {
             public int __row_number__ { get; set; }
+            /// <summary>
+            ///  人员标识码  
+            /// </summary>
             public string UID { get; set; }
+            /// <summary>
+            /// 姓名
+            /// </summary>
             public string XM { get; set; }
+            /// <summary>
+            ///  性别码  
+            /// </summary>
             public string XBM { get; set; }
+            /// <summary>
+            /// 民族码
+            /// </summary>
+            public string MZM { get; set; }
+            /// <summary>
+            /// 国籍码
+            /// </summary>
+            public string GJM { get; set; }
+            /// <summary>
+            /// 编制类别码{DMB_XB_BZLB}
+            /// </summary>
             public string BZLBM { get; set; }
+            /// <summary>
+            /// 当前状态码{DMB_HB_JZGDQZT}
+            /// </summary>
             public string DQZTM { get; set; }
+            /// <summary>
+            /// 教职工所在单位{HR_JGSZXX}
+            /// </summary>
             public string SZDWH { get; set; }
         }
     }
+
+
+
+   
+
 }

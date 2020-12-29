@@ -1,4 +1,4 @@
-﻿namespace XjAeon.ApiObject
+﻿namespace XjAeon.ApiObject.研究生系统
 {
     /*
     //接口调用请求说明子表
@@ -19,7 +19,7 @@
     /// <summary>
     /// 研究生系统 - 研究生专业代码表 
     /// </summary>
-    class PostGraduateProfessionalCodeObject : IApiObject
+    class 研究生专业代码表 : IApiObject
     {
         public string Url => "/open_api/customization/vfosterprofessional/full";
         public int code { get; set; }
@@ -41,14 +41,26 @@
 
         public class Data_Struct
         {
+            /// <summary>
+            /// 专业代码
+            /// </summary>
             public string ZYDM { get; set; }
+            /// <summary>
+            /// 专业名称
+            /// </summary>
             public string MC { get; set; }
         }
 
         public class Datum
         {
             public int __row_number__ { get; set; }
+            /// <summary>
+            /// 专业代码
+            /// </summary>
             public string ZYDM { get; set; }
+            /// <summary>
+            /// 专业名称
+            /// </summary>
             public string MC { get; set; }
         }
     }

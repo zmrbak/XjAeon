@@ -53,11 +53,12 @@
     <Compile Include="ApiObject\AccessTokenObject.cs" />
     <Compile Include="ApiObject\IApiObject.cs" />
     <Compile Include="ApiObject\IResult.cs" />
-    <Compile Include="ApiObject\PostGraduateBasicInfoObject.cs" />
-    <Compile Include="ApiObject\OrganizationCodeObject.cs" />
-    <Compile Include="ApiObject\PersonnelBasicInfoObject.cs" />
-    <Compile Include="ApiObject\PostGraduateProfessionalCodeObject.cs" />
-    <Compile Include="ApiObject\UndergraduateBasicInfoObject.cs" />
+    <Compile Include="ApiObject\教学管理数据集\研究生专业信息.cs" />
+    <Compile Include="ApiObject\研究生系统\研究生基础信息.cs" />
+    <Compile Include="ApiObject\人事系统\组织机构代码表.cs" />
+    <Compile Include="ApiObject\人事系统\人员基础信息.cs" />
+    <Compile Include="ApiObject\研究生系统\研究生专业代码表.cs" />
+    <Compile Include="ApiObject\教务系统\本科生基本信息.cs" />
     <Compile Include="Common\AccessToken.cs" />
     <Compile Include="Common\Utility.cs" />
     <Compile Include="Generic\XjAeonApiData.cs" />

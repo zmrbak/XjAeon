@@ -8,10 +8,8 @@ namespace XjAeon.ApiObject
 {
     public interface IApiObject
     {
-        string Url { get; }
-        int code { get; set; }
-        string message { get; set; }
-        string description { get; set; }
-        string uuid { get; set; }
+        string  Url { get; }
+        public int code { get; set; }
+        //public IResult result { get; set; }
     }
 }

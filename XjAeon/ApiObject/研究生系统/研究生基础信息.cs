@@ -1,4 +1,4 @@
-﻿namespace XjAeon.ApiObject
+﻿namespace XjAeon.ApiObject.研究生系统
 {
     /*
      //接口调用请求说明子表
@@ -29,14 +29,13 @@
     /// <summary>
     /// 研究生系统-	研究生基本信息
     /// </summary>
-    class PostGraduateBasicInfoObject : IApiObject
+    public class 研究生基础信息 : IApiObject
     {
         public string Url => "/open_api/customization/vaosesschoolroll/full";
         public int code { get; set; }
         public string message { get; set; }
         public string description { get; set; }
         public string uuid { get; set; }
-
         public Result result { get; set; }
 
         public class Result : IResult
@@ -51,24 +50,62 @@
 
         public class Data_Struct
         {
+            /// <summary>
+            /// 学号
+            /// </summary>
             public string xh { get; set; }
+            /// <summary>
+            /// 姓名
+            /// </summary>
             public string xm { get; set; }
+            /// <summary>
+            /// 年级
+            /// </summary>
             public string nj { get; set; }
+            /// <summary>
+            /// 性别
+            /// </summary>
             public string xb { get; set; }
+            /// <summary>
+            /// 专业代码
+            /// </summary>
             public string zydm { get; set; }
+            /// <summary>
+            /// 状态
+            /// </summary>
             public string status { get; set; }
+            //学院代码
             public string DWM { get; set; }
         }
 
         public class Datum
         {
             public int __row_number__ { get; set; }
+            /// <summary>
+            /// 学号
+            /// </summary>
             public string xh { get; set; }
+            /// <summary>
+            /// 姓名
+            /// </summary>
             public string xm { get; set; }
+            /// <summary>
+            /// 年级
+            /// </summary>
             public string nj { get; set; }
+            /// <summary>
+            /// 性别
+            /// </summary>
             public string xb { get; set; }
+            /// <summary>
+            /// 专业代码
+            /// </summary>
             public string zydm { get; set; }
+            /// <summary>
+            /// 状态
+            /// </summary>
             public string status { get; set; }
+            //学院代码
             public string DWM { get; set; }
         }
     }

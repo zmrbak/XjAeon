@@ -1,4 +1,4 @@
-﻿namespace XjAeon.ApiObject
+﻿namespace XjAeon.ApiObject.教务系统
 {
     /*
     //接口调用请求说明子表
@@ -35,7 +35,7 @@
     /// <summary>
     /// 教务系统-本科生基本信息
     /// </summary>
-    public class UndergraduateBasicInfoObject : IApiObject
+    public class 本科生基本信息 : IApiObject
     {
         public string Url => "/open_api/customization/viewstudent_alpha/full";
         public int code { get; set; }
@@ -57,29 +57,89 @@
 
         public class Data_Struct
         {
+            /// <summary>
+            /// 学号
+            /// </summary>
             public string STUDENTCODE { get; set; }
+            /// <summary>
+            /// 性别
+            /// </summary>
             public string STUSEX { get; set; }
+            /// <summary>
+            /// 专业名称
+            /// </summary>
             public string MAJORNAME { get; set; }
+            /// <summary>
+            /// 学院代码
+            /// </summary>
             public string COLLEGECODE { get; set; }
+            /// <summary>
+            /// 专业代码
+            /// </summary>
             public string MAJORCODE { get; set; }
+            /// <summary>
+            /// 班级编号
+            /// </summary>
             public string CLASSCODE { get; set; }
+            /// <summary>
+            /// 姓名
+            /// </summary>
             public string STUNAME { get; set; }
+            /// <summary>
+            /// 年级
+            /// </summary>
             public string GRADE { get; set; }
+            /// <summary>
+            /// 学院名称
+            /// </summary>
             public string COLLEGENAME { get; set; }
+            /// <summary>
+            /// 学籍状态
+            /// </summary>
             public string XJZT { get; set; }
         }
 
         public class Datum
         {
+            /// <summary>
+            /// 学号
+            /// </summary>            
             public string STUDENTCODE { get; set; }
+            /// <summary>
+            /// 性别
+            /// </summary>
             public string STUSEX { get; set; }
+            /// <summary>
+            /// 专业名称
+            /// </summary>
             public object MAJORNAME { get; set; }
+            /// <summary>
+            /// 学院代码
+            /// </summary>
             public object COLLEGECODE { get; set; }
+            /// <summary>
+            /// 专业代码
+            /// </summary>
             public object MAJORCODE { get; set; }
+            /// <summary>
+            /// 班级编号
+            /// </summary>
             public string CLASSCODE { get; set; }
+            /// <summary>
+            /// 姓名
+            /// </summary>
             public string STUNAME { get; set; }
+            /// <summary>
+            /// 年级
+            /// </summary>
             public int? GRADE { get; set; }
+            /// <summary>
+            /// 学院名称
+            /// </summary>
             public object COLLEGENAME { get; set; }
+            /// <summary>
+            /// 学籍状态
+            /// </summary>
             public string XJZT { get; set; }
         }
     }
