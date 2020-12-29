@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Web.Script.Serialization;
@@ -61,6 +62,8 @@ namespace XjAeon.Common
                 //写入配置文件
                 File.WriteAllText(appKeySecretFile, new JavaScriptSerializer().Serialize(appKeySecret));
                 Utility.Log.Info("写入配置文件：" + appKeySecretFile);
+
+                Process.Start("notepad.exe", appKeySecretFile);
                 throw new Exception("重新创建了配置文件(" + appKeySecretFile + ")，请手动修改参数！");
             }
 
